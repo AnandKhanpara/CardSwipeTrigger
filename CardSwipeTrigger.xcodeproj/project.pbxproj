@@ -10,7 +10,11 @@
 		86837A7623F661A4003F9ECC /* CardSwipeTrigger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86837A6C23F661A3003F9ECC /* CardSwipeTrigger.framework */; };
 		86837A7B23F661A4003F9ECC /* CardSwipeTriggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86837A7A23F661A4003F9ECC /* CardSwipeTriggerTests.swift */; };
 		86837A7D23F661A4003F9ECC /* CardSwipeTrigger.h in Headers */ = {isa = PBXBuildFile; fileRef = 86837A6F23F661A3003F9ECC /* CardSwipeTrigger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		86837AE923F676B4003F9ECC /* CardSwipeTrigger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86837AE823F676B4003F9ECC /* CardSwipeTrigger.framework */; };
+		86837AEF23F67B56003F9ECC /* CardSwipeTriggerAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86837AEA23F67B56003F9ECC /* CardSwipeTriggerAccess.swift */; };
+		86837AF023F67B56003F9ECC /* CardSwipeTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86837AEB23F67B56003F9ECC /* CardSwipeTrigger.swift */; };
+		86837AF123F67B56003F9ECC /* CardSwipeTriggerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86837AEC23F67B56003F9ECC /* CardSwipeTriggerExtension.swift */; };
+		86837AF223F67B56003F9ECC /* CardSwipeTriggerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86837AED23F67B56003F9ECC /* CardSwipeTriggerDelegate.swift */; };
+		86837AF323F67B56003F9ECC /* CardSwipeTriggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86837AEE23F67B56003F9ECC /* CardSwipeTriggerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +34,11 @@
 		86837A7523F661A4003F9ECC /* CardSwipeTriggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardSwipeTriggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86837A7A23F661A4003F9ECC /* CardSwipeTriggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwipeTriggerTests.swift; sourceTree = "<group>"; };
 		86837A7C23F661A4003F9ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		86837AE823F676B4003F9ECC /* CardSwipeTrigger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CardSwipeTrigger.framework; sourceTree = "<group>"; };
+		86837AEA23F67B56003F9ECC /* CardSwipeTriggerAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSwipeTriggerAccess.swift; sourceTree = "<group>"; };
+		86837AEB23F67B56003F9ECC /* CardSwipeTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSwipeTrigger.swift; sourceTree = "<group>"; };
+		86837AEC23F67B56003F9ECC /* CardSwipeTriggerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSwipeTriggerExtension.swift; sourceTree = "<group>"; };
+		86837AED23F67B56003F9ECC /* CardSwipeTriggerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSwipeTriggerDelegate.swift; sourceTree = "<group>"; };
+		86837AEE23F67B56003F9ECC /* CardSwipeTriggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSwipeTriggerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86837AE923F676B4003F9ECC /* CardSwipeTrigger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +100,11 @@
 		86837A8623F661DE003F9ECC /* CardSwipe */ = {
 			isa = PBXGroup;
 			children = (
-				86837AE823F676B4003F9ECC /* CardSwipeTrigger.framework */,
+				86837AEB23F67B56003F9ECC /* CardSwipeTrigger.swift */,
+				86837AEA23F67B56003F9ECC /* CardSwipeTriggerAccess.swift */,
+				86837AED23F67B56003F9ECC /* CardSwipeTriggerDelegate.swift */,
+				86837AEC23F67B56003F9ECC /* CardSwipeTriggerExtension.swift */,
+				86837AEE23F67B56003F9ECC /* CardSwipeTriggerView.swift */,
 			);
 			path = CardSwipe;
 			sourceTree = "<group>";
@@ -208,6 +219,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86837AEF23F67B56003F9ECC /* CardSwipeTriggerAccess.swift in Sources */,
+				86837AF023F67B56003F9ECC /* CardSwipeTrigger.swift in Sources */,
+				86837AF323F67B56003F9ECC /* CardSwipeTriggerView.swift in Sources */,
+				86837AF223F67B56003F9ECC /* CardSwipeTriggerDelegate.swift in Sources */,
+				86837AF123F67B56003F9ECC /* CardSwipeTriggerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +434,7 @@
 		86837A8423F661A4003F9ECC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CardSwipeTriggerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -435,6 +452,7 @@
 		86837A8523F661A4003F9ECC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CardSwipeTriggerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
