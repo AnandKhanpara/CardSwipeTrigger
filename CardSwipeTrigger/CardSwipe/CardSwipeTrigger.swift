@@ -11,6 +11,7 @@ import UIKit
 
 public class CardSwipeTrigger: NSObject {
     
+    
     public static func addCards(arrView:[[UIView:Any]], superview:UIView, delegate:CardSwipeTriggerDelegate?, swipeLevel:SwipeLevel = .medium) {
         CardSwipeTriggerAccess.cardSwipe(arrView: arrView, superview: superview, delegate: delegate, swipeLevel: swipeLevel)
     }
