@@ -6,6 +6,13 @@ CardSwipeTrigger
 |![alt tag](https://github.com/AnandKhanpara/GitProHubSupporting/blob/master/GitProHubSupporting/CardSwipeTrigger/Left500Pixel.png)| ![alt tag](https://github.com/AnandKhanpara/GitProHubSupporting/blob/master/GitProHubSupporting/CardSwipeTrigger/Center500Pixel.png) | ![alt tag](https://github.com/AnandKhanpara/GitProHubSupporting/blob/master/GitProHubSupporting/CardSwipeTrigger/Right500Pixel.png) |
 |  |  |  |
 
+
+### Installation with CocoaPods
+
+```
+pod 'CardSwipeTrigger', '0.0.3'
+```
+
 ## Usage
  
 Firstly, import CardSwipeTrigger
@@ -91,8 +98,3 @@ extension ViewController: CardSwipeTriggerDelegate {
 }
 ```
 
-### Installation with CocoaPods
-
-```
-pod 'CardSwipeTrigger', '0.0.3'
-```
