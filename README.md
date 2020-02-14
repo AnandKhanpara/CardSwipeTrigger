@@ -1,0 +1,2 @@
+# CardSwipeTrigger
+CardSwipeTrigger
