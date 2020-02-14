@@ -51,7 +51,7 @@ class ViewController: UIViewController {
                 }
             }
             
-            CardSwipeTrigger.addCards(arrView: arrCardView, superview: self.viewSuperView, delegate: nil, swipeLevel: .low)
+            CardSwipeTrigger.addCards(arrView: arrCardView, superview: self.viewSuperView, delegate: self, swipeLevel: .low)
         }
     }
     
@@ -66,6 +66,28 @@ class ViewController: UIViewController {
     @IBAction func btnLike(_ sender: UIButton) {
         CardSwipeTrigger.cardRightSwipe()
     }
+}
+```
+
+```swift
+extension ViewController: CardSwipeTriggerDelegate {
+    
+    func cardSwipeContinue(cardView: CardSwipeTriggerView, leftSwipe: Bool, rightSwipe: Bool, transfor: CGFloat, details: Any?) {
+        
+    }
+    
+    func cardSwipeDidEndLeftSwipe(cardView: CardSwipeTriggerView, details: Any?) {
+        
+    }
+    
+    func cardSwipeDidEndRightSwipe(cardView: CardSwipeTriggerView, details: Any?) {
+        
+    }
+    
+    func cardSwipeLoadingAddSuperview(cardAddPercentage: CGFloat) {
+        
+    }
+    
 }
 ```
 
