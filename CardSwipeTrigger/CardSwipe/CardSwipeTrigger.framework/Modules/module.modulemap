@@ -1,0 +1,11 @@
+framework module CardSwipeTrigger {
+  umbrella header "CardSwipeTrigger.h"
+
+  export *
+  module * { export * }
+}
+
+module CardSwipeTrigger.Swift {
+    header "CardSwipeTrigger-Swift.h"
+    requires objc
+}
