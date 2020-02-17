@@ -33,20 +33,21 @@ class CardSwipeTriggerAccess:NSObject {
         }
     }
     
-    static func cardSwipe(arrView:[[UIView:Any]]? = nil, superview:UIView, delegate:CardSwipeTriggerDelegate?, swipeLevel:SwipeLevel = .medium, userFirstInteraction:Bool = true) {
-        DispatchQueue.global(qos: .background).async {
-            DispatchQueue.main.async {
-                if var arrView = arrView {
-                    arrView.reverse()
-                    for i in 0..<arrView.count {
-                        let customView = arrView[i]
-                        let cardView = CardSwipeTriggerAccess.cardSwipe(addSubView: customView.keys.first, details: customView.values.first, delegate: delegate, superview: superview, swipeLevel: swipeLevel)
-                        if (arrView.count - 1) == i  {
-                            cardView.delegate?.cardSwipeLoadingAddSuperview(cardAddPercentage: CGFloat(100))
-                            CardSwipeTriggerAccess.firstTimeRearrangeCardView(userFirstInteraction: userFirstInteraction)
-                        }else {
-                            cardView.delegate?.cardSwipeLoadingAddSuperview(cardAddPercentage: CGFloat((( i * 100 ) / (arrView.count - 1))))
+    static func reload() {
+        DispatchQueue.main.async {
+            CardSwipeTriggerAccess.arrCardSwipeTrigger.removeAll()
+            guard let numberOfCard = CardSwipeTrigger.dataSource?.numberOfCardSwipeTrigger() else { return }
+            guard let superView = CardSwipeTrigger.dataSource?.cardSwipeSuperView() else { return }
+            for i in 0..<numberOfCard {
+                print(i, CardSwipeTriggerAccess.arrCardSwipeTrigger.count)
+                if let addUserView = CardSwipeTrigger.dataSource?.cardSwipe(index: i) {
+                    _ = CardSwipeTriggerAccess.cardSwipe(addSubView: addUserView, details: CardSwipeTrigger.dataSource?.cardSwipeAddDetails(index: i),  delegate: CardSwipeTrigger.delegate, superview: superView, swipeLevel: CardSwipeTrigger.cardSwipeLevel, indexTag: i)
+                    if (numberOfCard - 1) == i  {
+                        CardSwipeTriggerAccess.arrCardSwipeTrigger.reverse()
+                        for card in CardSwipeTriggerAccess.arrCardSwipeTrigger {
+                            superView.bringSubviewToFront(card)
                         }
+                        CardSwipeTriggerAccess.firstTimeRearrangeCardView(userFirstInteraction: CardSwipeTrigger.userFirstInteraction)
                     }
                 }
             }
@@ -79,7 +80,7 @@ class CardSwipeTriggerAccess:NSObject {
             cardView.layoutIfNeeded()
         }, completion: { _ in
             cardView.removeFromSuperview()
-            cardView.delegate?.cardSwipeDidEndLeftSwipe(cardView: cardView, details: cardView.details)
+            cardView.delegate?.cardSwipeDidEndLeftSwipe(cardView: cardView, index: cardView.indexTag, details: cardView.details)
             CardSwipeTriggerAccess.findView(cardView: cardView)
         })
     }
@@ -98,7 +99,7 @@ class CardSwipeTriggerAccess:NSObject {
             cardView.layoutIfNeeded()
         }, completion: { _ in
             cardView.removeFromSuperview()
-            cardView.delegate?.cardSwipeDidEndRightSwipe(cardView: cardView, details: cardView.details)
+            cardView.delegate?.cardSwipeDidEndRightSwipe(cardView: cardView, index: cardView.indexTag, details: cardView.details)
             CardSwipeTriggerAccess.findView(cardView: cardView)
         })
     }
@@ -128,8 +129,8 @@ class CardSwipeTriggerAccess:NSObject {
     }
     
     
-    static private func cardSwipe(addSubView:UIView? = nil, details:Any? = nil, delegate:CardSwipeTriggerDelegate?, superview:UIView, swipeLevel:SwipeLevel = .medium) -> CardSwipeTriggerView{
-        let cardSwipeView = CardSwipeTriggerView(addSubView: addSubView, details: details, swipeLevel: swipeLevel)
+    static private func cardSwipe(addSubView:UIView? = nil, details:Any? = nil, delegate:CardSwipeTriggerDelegate?, superview:UIView, swipeLevel:SwipeLevel = .medium, indexTag:Int) -> CardSwipeTriggerView {
+        let cardSwipeView = CardSwipeTriggerView(addSubView: addSubView, details: details, swipeLevel: swipeLevel, indexTag:indexTag)
         cardSwipeView.delegate = delegate
         superview.addSubview(cardSwipeView)
         CardSwipeTriggerAccess.arrCardSwipeTrigger.append(cardSwipeView)

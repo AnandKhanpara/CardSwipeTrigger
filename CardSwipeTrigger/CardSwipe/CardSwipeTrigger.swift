@@ -11,10 +11,11 @@ import UIKit
 
 public class CardSwipeTrigger: NSObject {
     
-    public static func addCards(arrView:[[UIView:Any]], superview:UIView, delegate:CardSwipeTriggerDelegate?, swipeLevel:SwipeLevel = .medium, userFirstInteraction:Bool = true) {
-        CardSwipeTriggerAccess.cardSwipe(arrView: arrView, superview: superview, delegate: delegate, swipeLevel: swipeLevel, userFirstInteraction: userFirstInteraction)
-    }
-    
+    public static var cardSwipeLevel:SwipeLevel = .medium
+    public static var delegate:CardSwipeTriggerDelegate?
+    public static var dataSource:CardSwipeTriggerDataSource?
+    public static var userFirstInteraction:Bool = true
+   
     public static func cardSwipeShake() {
         CardSwipeTriggerAccess.cardSwipeShake()
     }
@@ -25,5 +26,9 @@ public class CardSwipeTrigger: NSObject {
     
     public static func cardRightSwipe() {
         CardSwipeTriggerAccess.cardRightSwipe()
+    }
+    
+    public static func reload() {
+        CardSwipeTriggerAccess.reload()
     }
 }
