@@ -10,7 +10,7 @@ CardSwipeTrigger
 ### Installation with CocoaPods
 
 ```
-pod 'CardSwipeTrigger', '0.0.3'
+pod 'CardSwipeTrigger', '0.0.4'
 ```
 
 ## Usage
