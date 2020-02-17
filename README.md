@@ -24,11 +24,16 @@ import CardSwipeTrigger
 ### Initialization
 
 ```swift
-CardSwipeTrigger.addCards(arrView: arrCardView, superview: self.viewSuperView, delegate: nil, swipeLevel: .low)
+
+CardSwipeTrigger.cardSwipeLevel = .medium
+CardSwipeTrigger.delegate = self
+CardSwipeTrigger.dataSource = self
+CardSwipeTrigger.reload()
 
 CardSwipeTrigger.cardSwipeShake()
 CardSwipeTrigger.cardLeftSwipe()
 CardSwipeTrigger.cardRightSwipe()
+
 ```
 ```swift
 import UIKit
@@ -41,25 +46,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.async {
-            
-            var arrCardView = [[UIView:Any]]()
-            
-            for i in 0...22 {
-                if let cardView = Bundle.main.loadNibNamed("CardView", owner: nil, options: nil)?.first as? CardView {
-                    let image = UIImage(named: "\(i)")
-                    let image1 = UIImage(named: "profile")
-                    cardView.imgViewMain.image = image
-                    cardView.imgViewProfile.image = image1
-                    cardView.lblTitle.text = "Anand Khanpara"
-                    cardView.lblDetails.text = "GitHub & LinkedIn \nCardSwipeTrigger"
-                    cardView.btnInfo.addTarget(self, action: #selector(self.btnShake), for: .touchUpInside)
-                    arrCardView.append([cardView : i])
-                }
-            }
-            
-            CardSwipeTrigger.addCards(arrView: arrCardView, superview: self.viewSuperView, delegate: self, swipeLevel: .low)
-        }
+        CardSwipeTrigger.cardSwipeLevel = .medium
+        CardSwipeTrigger.delegate = self
+        CardSwipeTrigger.dataSource = self
+        CardSwipeTrigger.reload()
+        
     }
     
     @objc func btnShake(_ sender: UIButton) {
@@ -77,6 +68,28 @@ class ViewController: UIViewController {
 ```
 
 ```swift
+extension ViewController: CardSwipeTriggerDataSource {
+    
+   func cardSwipeSuperView() -> UIView {
+
+   }
+    
+   func numberOfCardSwipeTrigger() -> Int {
+        
+   }
+    
+   func cardSwipe(index: Int) -> UIView {
+        
+   }
+    
+   func cardSwipeAddDetails(index: Int) -> Any {
+        
+   }
+    
+}
+```
+
+```swift
 extension ViewController: CardSwipeTriggerDelegate {
     
     func cardSwipeContinue(cardView: CardSwipeTriggerView, leftSwipe: Bool, rightSwipe: Bool, transfor: CGFloat, details: Any?) {
@@ -88,10 +101,6 @@ extension ViewController: CardSwipeTriggerDelegate {
     }
     
     func cardSwipeDidEndRightSwipe(cardView: CardSwipeTriggerView, details: Any?) {
-        
-    }
-    
-    func cardSwipeLoadingAddSuperview(cardAddPercentage: CGFloat) {
         
     }
     
