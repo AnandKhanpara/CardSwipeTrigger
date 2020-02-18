@@ -25,7 +25,7 @@ import CardSwipeTrigger
 
 ```swift
 
-CardSwipeTrigger.cardSwipeLevel = .medium
+CardSwipeTrigger.swipeLevel = .medium
 CardSwipeTrigger.delegate = self
 CardSwipeTrigger.dataSource = self
 CardSwipeTrigger.reload()
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CardSwipeTrigger.cardSwipeLevel = .medium
+        CardSwipeTrigger.swipeLevel = .medium
         CardSwipeTrigger.delegate = self
         CardSwipeTrigger.dataSource = self
         CardSwipeTrigger.reload()
@@ -82,25 +82,21 @@ extension ViewController: CardSwipeTriggerDataSource {
         
    }
     
-   func cardSwipeAddDetails(index: Int) -> Any {
-        
-   }
-    
 }
 ```
 
 ```swift
 extension ViewController: CardSwipeTriggerDelegate {
     
-    func cardSwipeContinue(cardView: CardSwipeTriggerView, leftSwipe: Bool, rightSwipe: Bool, transfor: CGFloat, details: Any?) {
+    func cardSwipeContinue(cardView: CardSwipeTriggerView, index: Int, leftSwipe: Bool, rightSwipe: Bool, transfor: CGFloat) {
         
     }
-    
-    func cardSwipeDidEndLeftSwipe(cardView: CardSwipeTriggerView, details: Any?) {
+
+    func cardSwipeDidEndLeftSwipe(cardView: CardSwipeTriggerView, index: Int) {
         
     }
-    
-    func cardSwipeDidEndRightSwipe(cardView: CardSwipeTriggerView, details: Any?) {
+
+    func cardSwipeDidEndRightSwipe(cardView: CardSwipeTriggerView, index: Int) {
         
     }
     
