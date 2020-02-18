@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "CardSwipeTrigger"
-  spec.version      = "0.0.5"
+  spec.version      = "0.0.6"
   spec.summary      = "Add CardSwipeTrigger"
   
   spec.description  = <<-DESC

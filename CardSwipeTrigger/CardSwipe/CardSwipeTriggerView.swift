@@ -11,7 +11,6 @@ import UIKit
 public class CardSwipeTriggerView: UIView, UIGestureRecognizerDelegate {
     
     var mainView = UIView()
-    var details:Any? = nil
     var indexTag:Int = 0
     var topAnchorConstraint = NSLayoutConstraint()
     var leadingAnchorConstraint = NSLayoutConstraint()
@@ -39,14 +38,13 @@ public class CardSwipeTriggerView: UIView, UIGestureRecognizerDelegate {
     
     var swipeLevel:SwipeLevel = .medium
     
-    init(frame: CGRect = CGRect(), addSubView:UIView? = nil, details:Any? = nil, swipeLevel:SwipeLevel = .medium, indexTag:Int) {
+    init(frame: CGRect = CGRect(), addSubView:UIView? = nil, swipeLevel:SwipeLevel = .medium, indexTag:Int) {
         super.init(frame: frame)
         
         DispatchQueue.main.async {
             
             self.indexTag = indexTag
             self.swipeLevel = swipeLevel
-            self.details = details
             self.mainView = self.superview ?? UIView()
             self.frame = self.mainView.bounds
             
@@ -65,7 +63,6 @@ public class CardSwipeTriggerView: UIView, UIGestureRecognizerDelegate {
                 viewCard.layer.cornerRadius = subview.layer.cornerRadius
                 viewCard.addSubview(subview)
                 subview.addBounds(superView: viewCard)
-                
             }
             
             self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
@@ -108,11 +105,10 @@ public class CardSwipeTriggerView: UIView, UIGestureRecognizerDelegate {
             }else {
                 self.transform = CGAffineTransform(a: cos(angle), b: sin(angle), c: -sin(angle), d: cos(angle), tx: tx , ty: ty).scaledBy(x: 1 - abs(angle), y: 1 - abs(angle))
             }
-            
             if firstViewLocation.x > lastViewLocation.x {
-                delegate?.cardSwipeContinue(cardView: self, index: self.indexTag, leftSwipe: true, rightSwipe: false, transfor: 1 - abs(angle), details: self.details)
+                delegate?.cardSwipeContinue(cardView: self, index: self.indexTag, leftSwipe: true, rightSwipe: false, transfor: 1 - abs(angle))
             }else if firstViewLocation.x < lastViewLocation.x {
-                delegate?.cardSwipeContinue(cardView: self, index: self.indexTag, leftSwipe: false, rightSwipe: true, transfor: 1 - abs(angle), details: self.details)
+                delegate?.cardSwipeContinue(cardView: self, index: self.indexTag, leftSwipe: false, rightSwipe: true, transfor: 1 - abs(angle))
             }
             
         case .ended:
@@ -127,10 +123,10 @@ public class CardSwipeTriggerView: UIView, UIGestureRecognizerDelegate {
                 let xTransfrom = firstViewLocation.x - lastViewLocation.x
                 
                 if minimumXTransform < xTransfrom {
-                    self.delegate?.cardSwipeDidEndLeftSwipe(cardView: self, index: self.indexTag, details: self.details)
+                    self.delegate?.cardSwipeDidEndLeftSwipe(cardView: self, index: self.indexTag)
                     self.transformSwipeContinue(tx: -moveTransform, ty: -100)
                 }else {
-                    delegate?.cardSwipeContinue(cardView: self, index: self.indexTag, leftSwipe: true, rightSwipe: false, transfor: 1, details: self.details)
+                    delegate?.cardSwipeContinue(cardView: self, index: self.indexTag, leftSwipe: true, rightSwipe: false, transfor: 1)
                     self.transformIdentity()
                 }
                 
@@ -139,10 +135,10 @@ public class CardSwipeTriggerView: UIView, UIGestureRecognizerDelegate {
                 let xTransfrom = lastViewLocation.x - firstViewLocation.x
                 
                 if minimumXTransform < xTransfrom {
-                    self.delegate?.cardSwipeDidEndRightSwipe(cardView: self, index: self.indexTag, details: self.details)
+                    self.delegate?.cardSwipeDidEndRightSwipe(cardView: self, index: self.indexTag)
                     self.transformSwipeContinue(tx: moveTransform, ty: -100)
                 }else {
-                    delegate?.cardSwipeContinue(cardView: self, index: self.indexTag, leftSwipe: true, rightSwipe: false, transfor: 1, details: self.details)
+                    delegate?.cardSwipeContinue(cardView: self, index: self.indexTag, leftSwipe: true, rightSwipe: false, transfor: 1)
                     self.transformIdentity()
                 }
             }

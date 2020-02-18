@@ -11,7 +11,7 @@ import UIKit
 
 public class CardSwipeTrigger: NSObject {
     
-    public static var cardSwipeLevel:SwipeLevel = .medium
+    public static var swipeLevel:SwipeLevel = .medium
     public static var delegate:CardSwipeTriggerDelegate?
     public static var dataSource:CardSwipeTriggerDataSource?
     public static var userFirstInteraction:Bool = true

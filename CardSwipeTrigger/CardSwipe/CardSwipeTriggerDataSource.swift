@@ -13,5 +13,4 @@ public protocol CardSwipeTriggerDataSource {
     func numberOfCardSwipeTrigger() -> Int
     func cardSwipeSuperView() -> UIView
     func cardSwipe(index:Int) -> UIView
-    func cardSwipeAddDetails(index:Int) -> Any?
 }
